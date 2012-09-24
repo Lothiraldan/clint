@@ -16,7 +16,7 @@ import time
 STREAM = sys.stderr
 
 BAR_TEMPLATE = '%s[%s%s] %i/%i - %s\r'
-MILL_TEMPLATE = '%s %s %i/%i\r'  
+MILL_TEMPLATE = '%s %s %i/%i\r'
 
 DOTS_CHAR = '.'
 BAR_FILLED_CHAR = '#'
@@ -28,7 +28,7 @@ ETA_INTERVAL = 1
 #How many intervals (excluding the current one) to calculate the simple moving average
 ETA_SMA_WINDOW = 9
 
-class bar(object):
+class Bar(object):
     """Progress iterator. Wrap your iterables with it."""
 
     def _show(self, _i):
@@ -88,7 +88,7 @@ class bar(object):
 
 
 
-class dots(object):
+class Dots(object):
     """Progress iterator. Prints a dot for each item being iterated"""
 
     def __init__(self, it=None, label='', hide=False):
@@ -126,7 +126,7 @@ class dots(object):
         self._finish()
 
 
-class mill(object):
+class Mill(object):
     """Progress iterator. Prints a mill while iterating over the items."""
 
     def __init__(self, it=None, label='', hide=False, expected_size=None):
@@ -175,3 +175,7 @@ class mill(object):
             self._show(i+1)
 
         self._finish()
+
+mill = Mill
+dots = Dots
+bar = Bar
